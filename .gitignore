@@ -83,3 +83,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+prependix.txt
+cache/
+config/config.ini
+config/permissions.ini

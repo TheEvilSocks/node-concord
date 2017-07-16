@@ -1,0 +1,33 @@
+{
+  "name": "concord",
+  "version": "1.0.0",
+  "description": "Concord is a musicbot for Discord written in NodeJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheEvilSocks/node-concord.git"
+  },
+  "keywords": [
+    "node",
+    "discord",
+    "musicbot",
+    "concord",
+    "music",
+    "bot",
+    "eris"
+  ],
+  "author": "TheEvilSocks",
+  "license": "EUPL-1.1",
+  "bugs": {
+    "url": "https://github.com/TheEvilSocks/node-concord/issues"
+  },
+  "homepage": "https://github.com/TheEvilSocks/node-concord#readme",
+  "dependencies": {
+    "eris": "^0.7.0",
+    "ini": "^1.3.4",
+    "youtube-dl": "^1.11.1"
+  }
+}
