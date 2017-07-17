@@ -48,6 +48,44 @@ try{
 		if(config.Bot.Prefix === undefined)
 				throw new Error(lang.getLocalizedString("config.error.variable").format("Prefix"));
 
+		if(config.Bot.IgnoreBots === undefined){
+			config.Bot.IgnoreBots = false;
+		}else{
+			if(config.Bot.IgnoreBots === "yes" || config.Bot.IgnoreBots === "true"){
+				config.Bot.IgnoreBots = true;
+			}else if(config.Bot.IgnoreBots === "no" || config.Bot.IgnoreBots === "false"){
+				config.Bot.IgnoreBots = false;
+			}else{
+				throw new Error(lang.getLocalizedString("config.error.invalid").format("IgnoreBots"));
+			}
+		}
+
+		if(config.Bot.FutureDownload === undefined){
+			config.Bot.FutureDownload = 1;
+		}else{
+			if(config.Bot.FutureDownload == parseInt(config.Bot.FutureDownload)){
+				config.Bot.FutureDownload = parseInt(config.Bot.FutureDownload);
+			}else{
+				throw new Error(lang.getLocalizedString("config.error.invalid").format("FutureDownload"));
+			}
+		}
+
+		if(config.Bot.AnnounceDownload === undefined){
+			config.Bot.AnnounceDownload = false;
+		}else{
+			if(config.Bot.AnnounceDownload === "yes" || config.Bot.AnnounceDownload === "true"){
+				config.Bot.AnnounceDownload = true;
+			}else if(config.Bot.AnnounceDownload === "no" || config.Bot.AnnounceDownload === "false"){
+				config.Bot.AnnounceDownload = false;
+			}else{
+				throw new Error(lang.getLocalizedString("config.error.invalid").format("AnnounceDownload"));
+			}
+		}
+
+
+
+
+
 	if(!config.Discord || typeof config.Discord !== 'object')
 		throw new Error(lang.getLocalizedString("config.error.section").format("Discord"));
 		
@@ -129,8 +167,8 @@ config.Discord.Token = undefined;
 client.on('ready', () => {
 	console.log(lang.getLocalizedString("bot.ready.identify").format({username: client.user.username, id: client.user.id}));
 	console.log(lang.getLocalizedString("bot.ready.guilds").format({guildcount: client.guilds.size, guilds: client.guilds.map(g => {
-		return `${g.id} - ${g.name}\n`
-	})}));
+		return `${g.id} - ${g.name}`
+	}).join("\n")}));
 });
 
 
@@ -147,7 +185,7 @@ client.on('messageCreate', msg => {
 			return;
 		}
 		if(!players[msg.channel.guild.id])
-			players[msg.channel.guild.id] = new Player();
+			players[msg.channel.guild.id] = new Player(client, config, lang);
 		
 		let e = {
 			args: msg.content.indexOf(' ') > -1 ? msg.content.substring(msg.content.indexOf(' ') + 1).split(" ") : [],

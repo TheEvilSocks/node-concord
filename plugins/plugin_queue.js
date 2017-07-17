@@ -45,7 +45,13 @@ module.exports = {
 		}
 
 
-		let currentlyPlaying = e.player.currentSong ? e.lang.getLocalizedString("commands.queue.current").format({song: e.player.currentSong.title}) : e.lang.getLocalizedString("commands.queue.empty").format({prefix: e.config.Bot.Prefix});
+		if(fields.length == 0 && page == 1)
+			fields.push({
+				name: "1.", 
+				value: e.lang.getLocalizedString("commands.queue.empty").format({prefix: e.config.Bot.Prefix})
+			});
+
+		let currentlyPlaying = e.player.currentSong ? e.lang.getLocalizedString("commands.queue.current").format({song: e.player.currentSong.title}) : e.lang.getLocalizedString("commands.queue.notplaying");
 		
 		msg.channel.createMessage({
 			content: "",

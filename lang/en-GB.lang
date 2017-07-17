@@ -1,5 +1,6 @@
 config.error.section=Section '%s' was not found in the configuration file.
 config.error.variable=Variable '%s' was not found in the configuration file.
+config.error.invalid=Invalid setting on option '%s'.
 
 permissions.error.nodefault=No 'Default' permission group was found.
 
@@ -31,11 +32,13 @@ commands.summon.joined=Joined voice channel {channel}.
 commands.summon.alreadyjoined=I am already in voice channel {channel}.
 commands.summon.joinfail=Failed to join the voice channel.
 
-commands.play.dlprogress=:inbox_tray: Downloading **{song}**\n`[{progressbar}]` `[{percent}%]
-commands.play.failinfo=I couldn't get the video information.
-commands.play.add=Added **{song}** to the playing queue. Estimated time until playing: `{timeleft}`
+commands.play.dlprogress=:inbox_tray: Downloading **{song}**\n`[{progressbar}]` `[{percent}%]`
+commands.play.failinfo=:x: I couldn't get the video information.
+commands.play.add=:white_check_mark: Added **{song}** to the playing queue. Estimated time until playing: `{timeleft}`
+commands.play.lookingup=:hourglass_flowing_sand: Looking up video details...
 
 commands.queue.empty=The queue is currently empty. Add a song by using `{prefix}play <song>`
+commands.queue.notplaying=There's currently no song being played.
 commands.queue.title=Current queue [Page {page}/{pages}]
 commands.queue.item=**{song}** **—** added by {user}.
 commands.queue.current=Currently playing: **{song}**
@@ -43,3 +46,10 @@ commands.queue.current=Currently playing: **{song}**
 commands.volume.get=The volume is set at **{volume}%**
 commands.volume.set=You've set the volume to **{volume}%**
 commands.volume.error=Please enter a number.
+
+commands.nowplaying.response=Currently playing: **{song}**\n:{play_emoji}: :{speaker_emoji}: {progressbar} `[{time}]`
+commands.nowplaying.notplaying=There's currently no song being played. Add a song by using `{prefix}play <song>`
+
+
+
+

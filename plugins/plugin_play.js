@@ -45,48 +45,27 @@ module.exports = {
 
 		
 		var size = 0, pos = 0, lastEdit = new Date().getTime();
-
-		e.player.ytdl.getInfo(e.args[0], (err, info) => {
-			if(err){
-				msg.channel.createMessage(e.lang.getLocalizedString("commands.play.failinfo"));
-				return;
-			}
-			if(info){
-				e.player.addSong({
-					url: info.webpage_url,
-					title: info.title,
-					addedBy: msg.author.id,
-					textChannel: msg.channel.id,
-					duration:  Math.floor(e.util.formatTime(info.duration) / 10),
-					path: "./cache/" + info._filename
-				});
-				msg.channel.createMessage(e.lang.getLocalizedString("commands.play.add").format({
-					song: info.title,
-					timeleft: "NYI"//e.util.timeFormat(e.player.estimatedTime).toString()
-				}));
-			}
-		});
-
-
-		/*
-		if(msg.member.voiceState && msg.member.voiceState.channelID){
-			if(e.player.channelID === msg.member.voiceState.channelID){
-				msg.channel.createMessage(e.lang.getLocalizedString("commands.summon.alreadyjoined").format({channel: msg.channel.guild.channels.find(c=>c.id == msg.member.voiceState.channelID).name}));
-				return;
-			}
-			client.joinVoiceChannel(msg.member.voiceState.channelID).then(voiceConnection => {
-				msg.channel.createMessage(e.lang.getLocalizedString("commands.summon.joined").format({channel: msg.channel.guild.channels.find(c=>c.id == msg.member.voiceState.channelID).name}));
-				e.player.setVoiceConnection(voiceConnection);
-
-			}).catch(joinError => {
-				msg.channel.createMessage(e.lang.getLocalizedString("commands.summon.joinfail"));
-				console.log(joinError);
-				return;
+		msg.channel.createMessage(e.lang.getLocalizedString("commands.play.lookingup")).then(_msg => {
+			e.player.ytdl.getInfo(e.args[0], (err, info) => {
+				if(err){
+					_msg.edit(e.lang.getLocalizedString("commands.play.failinfo"));
+					return;
+				}
+				if(info){
+					e.player.addSong({
+						url: info.webpage_url,
+						title: info.title,
+						addedBy: msg.author.id,
+						textChannel: msg.channel.id,
+						duration:  Math.floor(e.util.formatTime(info.duration) / 10),
+						path: "./cache/" + info._filename
+					});
+					_msg.edit(e.lang.getLocalizedString("commands.play.add").format({
+						song: info.title,
+						timeleft: "NYI"//e.util.timeFormat(e.player.estimatedTime).toString()
+					}));
+				}
 			});
-
-		}else{
-			msg.channel.createMessage(e.lang.getLocalizedString("commands.summon.novoice"));
-			return;
-		}*/
+		})
 	}
 }
