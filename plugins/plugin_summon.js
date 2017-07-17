@@ -43,7 +43,7 @@ module.exports = {
 			});
 
 		}else{
-			msg.channel.createMessage(e.lang.getLocalizedString("commands.summon.novoice"));
+			msg.channel.createMessage(e.lang.getLocalizedString("error.membernotinvoice"));
 			return;
 		}
 	}

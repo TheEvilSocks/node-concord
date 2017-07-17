@@ -13,6 +13,10 @@ player.playing=Now playing in {channel}: **{song}** added by **{username}**\n:li
 
 plugin.error.loading=Encountered an error when loading {plugin}\nStack:\n{stack}
 
+error.membernotinvoice=You are not in a voice channel.
+error.botnotinvoice=I am not in a voice channel.
+
+
 commands.ping.description=Calculate the round-trip-delay to the Discord network.
 commands.ping.usage={prefix}ping
 commands.ping.response1=Pong!
@@ -23,13 +27,10 @@ commands.play.usage={prefix}play <song>
 commands.play.response.notfound=I couldn't find the song you meant.
 commands.play.response.queued=Added {songname} to the queue.
 
-commands.summon.novoice=You are not in a voice channel.
 commands.summon.joined=Joined voice channel {channel}.
 commands.summon.alreadyjoined=I am already in voice channel {channel}.
 commands.summon.joinfail=Failed to join the voice channel.
 
-commands.play.novoice1=You are not in a voice channel.
-commands.play.novoice2=I am not in a voice channel.
 commands.play.dlprogress=:inbox_tray: Downloading **{song}**\n`[{progressbar}]` `[{percent}%]
 commands.play.failinfo=I couldn't get the video information.
 commands.play.add=Added **{song}** to the playing queue. Estimated time until playing: `{timeleft}`
@@ -38,3 +39,6 @@ commands.queue.empty=The queue is currently empty. Add a song by using `{prefix}
 commands.queue.title=Current queue [Page {page}/{pages}]
 commands.queue.item=**{song}** **—** added by {user}.
 commands.queue.current=Currently playing: **{song}**
+
+commands.volume.get=The volume is set at **{volume}%**
+commands.volume.set=You've set the volume to **{volume}%**

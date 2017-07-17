@@ -163,6 +163,7 @@ client.on('messageCreate', msg => {
 			cmd = cmd.subcommands[msg.content.substring(msg.content.indexOf(" ") + 1, msg.content.substring(msg.content.indexOf(" ") + 1).indexOf(" "))];
 		}
 
+
 		cmd.action(client, msg, e);
 	}
 

@@ -28,12 +28,12 @@ module.exports = {
 	},
 	action: function(client, msg, e){
 		if(!msg.member.voiceState || !msg.member.voiceState.channelID){
-			msg.channel.createMessage(e.lang.getLocalizedString("commands.play.novoice1"));
+			msg.channel.createMessage(e.lang.getLocalizedString("error.membernotinvoice"));
 			return;
 		}
 
 		if(!e.player.voiceConnection || !e.player.channelID){
-			msg.channel.createMessage(e.lang.getLocalizedString("commands.play.novoice2"));
+			msg.channel.createMessage(e.lang.getLocalizedString("error.botnotinvoice"));
 			return;
 		}
 
