@@ -41,11 +41,21 @@ module.exports = {
 			return;
 		}
 
+		if(e.args[0] != parseFloat(e.args[0])){
+			msg.channel.createMessage(e.lang.getLocalizedString("commands.volume.error").format({volume: e.player.getVolume().toString()}));
+			return;
+		}
+		e.args[0] = parseFloat(e.args[0]) / 100;
+
 		if(e.args[0].startsWith("+") || e.args[0].startsWith("-")){
-			msg.channel.createMessage(e.lang.getLocalizedString("commands.volume.set").format({volume: e.player.addVolume(parseInt(e.args[0])).toString()}));
+			msg.channel.createMessage(e.lang.getLocalizedString("commands.volume.set").format({
+				volume: e.player.addVolume((parseFloat(e.args[0])*100).toFixed(2))
+			}));
 			return;
 		}else{
-			msg.channel.createMessage(e.lang.getLocalizedString("commands.volume.set").format({volume: e.player.setVolume(parseInt(e.args[0])).toString()}));
+			msg.channel.createMessage(e.lang.getLocalizedString("commands.volume.set").format({
+				volume: e.player.setVolume((parseFloat(e.args[0])*100).toFixed(2))
+			}));
 			return;
 		}
 

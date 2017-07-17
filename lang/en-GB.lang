@@ -42,3 +42,4 @@ commands.queue.current=Currently playing: **{song}**
 
 commands.volume.get=The volume is set at **{volume}%**
 commands.volume.set=You've set the volume to **{volume}%**
+commands.volume.error=Please enter a number.
